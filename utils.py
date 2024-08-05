@@ -97,9 +97,9 @@ def per_class_dice(y_pred, y_true, num_class):
         GT = y_true[:,:,i].view(-1)
         Pred = y_pred[:,:,i].view(-1)
         #print(GT.shape, Pred.shape)
-        inter = (GT * Pred).sum() + 0.0001
+        inter = (GT * Pred).sum()
         union = GT.sum()  + Pred.sum()  + 0.0001
-        t = 2 * inter / union
+        t = (2 * inter + 0.0001) / union
         avg_dice = avg_dice + (t / num_class)
         dice_all[i] = t
     return avg_dice, dice_all
