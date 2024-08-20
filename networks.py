@@ -368,7 +368,8 @@ class YNet_general(nn.Module):
 
         dec1 = self.decoder1(dec1)
 
-        return self.softmax(self.conv(dec1))
+        #return self.softmax(self.conv(dec1))
+        return self.conv(dec1)
 
     @staticmethod
     def _block(in_channels, features, name):
